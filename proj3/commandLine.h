@@ -14,6 +14,16 @@
 #include "getopt.h"
 using namespace std;
 
-string getopt(int argc, char ** argv);
+struct flagOptions{
+    bool summary = false;
+    bool verbose = false;
+    bool median = false;
+    bool transfers = false;
+    bool insiders = false;
+    bool ttt = false;
+};
+
+string getopt(int argc, char ** argv, flagOptions op);
+
 
 #endif /* defined(__proj3__commandLine__) */

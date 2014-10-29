@@ -8,9 +8,7 @@
 
 #include "commandLine.h"
 
-string getopt(int argc, char ** argv){
-    
-    bool s = false, q = false;
+string getopt(int argc, char ** argv, flagOptions op){
     
     struct option longOpts[]={
         {"summary", no_argument, NULL, 's'},
@@ -25,16 +23,22 @@ string getopt(int argc, char ** argv){
     while((opt = getopt_long (argc, argv, "svmti:g:h", longOpts, &index)) != -1){
         switch(opt) {
             case 's':
+                op.summary = true;
                 break;
             case 'v':
+                op.verbose = true;
                 break;
             case 'm':
+                op.median = true;
                 break;
             case 't':
+                op.transfers=true;
                 break;
             case 'i':
+                op.insiders = true;
                 break;
             case 'g':
+                op.ttt = true;
                 break;
             case 'h':
                 cout<<"This is a Stock Market Simulation\n"
@@ -47,14 +51,6 @@ string getopt(int argc, char ** argv){
                     "--h -help prints this!\n";
                 exit(0);
         }
-    }
-    if(s && q){
-        cerr << "You have to many routing Schemes oh no!\n";
-        exit(1);
-    }
-    if(!(s || q)){
-        cerr<<"You forgot to pick a routing scheme dummy!\n";
-        exit(1);
     }
     string mapType;
     cin>>mapType;
