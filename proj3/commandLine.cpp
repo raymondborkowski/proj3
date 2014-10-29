@@ -8,7 +8,7 @@
 
 #include "commandLine.h"
 
-string getopt(int argc, char ** argv, flagOptions op){
+flagOptions getopt(int argc, char ** argv){
     
     struct option longOpts[]={
         {"summary", no_argument, NULL, 's'},
@@ -19,6 +19,7 @@ string getopt(int argc, char ** argv, flagOptions op){
         {"ttt", required_argument, NULL, 'g'},
         {"help", no_argument, NULL, 'h'}
     };
+    flagOptions op;
     int opt = 0, index = 0;
     while((opt = getopt_long (argc, argv, "svmti:g:h", longOpts, &index)) != -1){
         switch(opt) {
@@ -52,8 +53,7 @@ string getopt(int argc, char ** argv, flagOptions op){
                 exit(0);
         }
     }
-    string mapType;
-    cin>>mapType;
+    cin>>op.mapType;
     
-    return mapType;
+    return op;
 }

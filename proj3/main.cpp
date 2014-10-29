@@ -13,12 +13,10 @@ int main(int argc, char ** argv) {
 
     ios_base::sync_with_stdio(false);
     flagOptions op;
-    string mapType = getopt(argc, argv, op);
+    op = getopt(argc, argv);
     
     
-    
-    
-    cout<<mapType;
+    cout<<op.mapType;
     
     
     return 0;

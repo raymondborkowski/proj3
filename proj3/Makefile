@@ -4,13 +4,13 @@ LD_LIBRARY_PATH := /usr/um/gcc-4.7.0/lib64
 LD_RUN_PATH := /usr/um/gcc-4.7.0/lib64
 
 # designate which compiler to use
-CXX			= g++
+CXX            = g++
 # list of sources used in project
-SOURCES 	= $(wildcard *.cpp)
+SOURCES     = $(wildcard *.cpp)
 # list of objects used in project
-OBJECTS		= $(SOURCES:%.cpp=%.o)
+OBJECTS        = $(SOURCES:%.cpp=%.o)
 # name of the executable produced by the top level
-EXECUTABLE 	= MineEscape
+EXECUTABLE     = MINEFILE
 # name of the tar ball created for submission
 SUBMIT_FILE = submit.tar.gz
 
@@ -18,7 +18,7 @@ SUBMIT_FILE = submit.tar.gz
 CXXFLAGS = -std=c++11 -Wall -Werror -Wextra -pedantic
 
 # make release - will compile "all" with $(CXXFLAGS) and the -O3 flag
-#				 also defines NDEBUG so that asserts will not check
+#                 also defines NDEBUG so that asserts will not check
 release: CXXFLAGS += -O3 -DNDEBUG
 release: all
 
@@ -37,7 +37,7 @@ $(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXECUTABLE)
 
 # individual dependencies for objects
 # YOU NEED TO ADD YOUR OWN DEPENDENCIES HERE!!!
-main.o: main.cpp commanLine.cpp commandLine.h
+main.o: main.cpp commandLine.cpp commandLine.h
 
 # rule for creating objects
 %.o:

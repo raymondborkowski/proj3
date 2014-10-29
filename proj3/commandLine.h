@@ -21,9 +21,10 @@ struct flagOptions{
     bool transfers = false;
     bool insiders = false;
     bool ttt = false;
+    string mapType;
 };
 
-string getopt(int argc, char ** argv, flagOptions op);
+flagOptions getopt(int argc, char ** argv);
 
 
 #endif /* defined(__proj3__commandLine__) */
