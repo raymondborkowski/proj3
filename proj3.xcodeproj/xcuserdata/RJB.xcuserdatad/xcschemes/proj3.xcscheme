@@ -57,6 +57,12 @@
             ReferencedContainer = "container:proj3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = " &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

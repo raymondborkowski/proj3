@@ -7,9 +7,18 @@
 //
 
 #include <iostream>
+#include "commandLine.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main(int argc, char ** argv) {
+
+    ios_base::sync_with_stdio(false);
+    string mapType = getopt(argc, argv);
+    
+    
+    
+    
+    cout<<mapType;
+    
+    
     return 0;
 }
