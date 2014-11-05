@@ -59,10 +59,25 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = " &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;"
-            isEnabled = "YES">
+            argument = "-v &lt; test.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-q --output M &lt; /Users/RJB/Documents/classes/eecs281/project1/project1/test.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "MYARQ"
+            value = "TLinput.txt"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

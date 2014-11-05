@@ -8,15 +8,26 @@
 
 #include <iostream>
 #include "commandLine.h"
+#include "errorChecking.h"
+#include <fstream>
 
 int main(int argc, char ** argv) {
-
-    ios_base::sync_with_stdio(false);
+    
+  //  ios_base::sync_with_stdio(false);
+    ifstream arq(getenv("MYARQ"));
+    cin.rdbuf(arq.rdbuf());
     flagOptions op;
     op = getopt(argc, argv);
+    cout<<op.mapType<<endl;
     
-    
-    cout<<op.mapType;
+    if(op.mapType == "PR"){
+        pseudo
+    }
+    else if(op.mapType == "TL"){
+        
+    }
+    else
+        exit(1);
     
     
     return 0;

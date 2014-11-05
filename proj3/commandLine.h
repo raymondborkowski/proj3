@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <random>
+#include "errorChecking.h"
 #include "getopt.h"
 using namespace std;
 

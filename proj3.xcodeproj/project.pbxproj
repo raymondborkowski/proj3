@@ -10,6 +10,8 @@
 		347F278E1A008615003C9EE0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347F278D1A008615003C9EE0 /* main.cpp */; };
 		347F27961A0086D3003C9EE0 /* commandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347F27941A0086D3003C9EE0 /* commandLine.cpp */; };
 		347F27981A009E88003C9EE0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 347F27971A009E88003C9EE0 /* Makefile */; };
+		347F279C1A01D22A003C9EE0 /* errorChecking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347F279A1A01D22A003C9EE0 /* errorChecking.cpp */; };
+		3494D5FF1A09EE9200699658 /* orderLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3494D5FD1A09EE9200699658 /* orderLine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,10 @@
 		347F27951A0086D3003C9EE0 /* commandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commandLine.h; sourceTree = "<group>"; };
 		347F27971A009E88003C9EE0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		347F27991A009EE5003C9EE0 /* TLinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TLinput.txt; sourceTree = "<group>"; };
+		347F279A1A01D22A003C9EE0 /* errorChecking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = errorChecking.cpp; sourceTree = "<group>"; };
+		347F279B1A01D22A003C9EE0 /* errorChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errorChecking.h; sourceTree = "<group>"; };
+		3494D5FD1A09EE9200699658 /* orderLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = orderLine.cpp; sourceTree = "<group>"; };
+		3494D5FE1A09EE9200699658 /* orderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderLine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +71,11 @@
 			children = (
 				347F278D1A008615003C9EE0 /* main.cpp */,
 				347F27941A0086D3003C9EE0 /* commandLine.cpp */,
+				347F279A1A01D22A003C9EE0 /* errorChecking.cpp */,
+				347F279B1A01D22A003C9EE0 /* errorChecking.h */,
 				347F27951A0086D3003C9EE0 /* commandLine.h */,
+				3494D5FD1A09EE9200699658 /* orderLine.cpp */,
+				3494D5FE1A09EE9200699658 /* orderLine.h */,
 				347F27971A009E88003C9EE0 /* Makefile */,
 				347F27991A009EE5003C9EE0 /* TLinput.txt */,
 			);
@@ -128,7 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347F279C1A01D22A003C9EE0 /* errorChecking.cpp in Sources */,
 				347F27981A009E88003C9EE0 /* Makefile in Sources */,
+				3494D5FF1A09EE9200699658 /* orderLine.cpp in Sources */,
 				347F278E1A008615003C9EE0 /* main.cpp in Sources */,
 				347F27961A0086D3003C9EE0 /* commandLine.cpp in Sources */,
 			);

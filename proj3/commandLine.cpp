@@ -43,13 +43,13 @@ flagOptions getopt(int argc, char ** argv){
                 break;
             case 'h':
                 cout<<"This is a Stock Market Simulation\n"
-                    "--s -summary prints that\n"
-                    "--v -verbose prints verbose\n"
-                    "--m -median prints median\n"
-                    "--t -transfers prints transfers\n"
-                    "--i -insiders prints insiders\n"
-                    "--g -ttt prints ttt\n"
-                    "--h -help prints this!\n";
+                "--s -summary prints that\n"
+                "--v -verbose prints verbose\n"
+                "--m -median prints median\n"
+                "--t -transfers prints transfers\n"
+                "--i -insiders prints insiders\n"
+                "--g -ttt prints ttt\n"
+                "--h -help prints this!\n";
                 exit(0);
         }
     }
