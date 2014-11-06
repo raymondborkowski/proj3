@@ -11,6 +11,7 @@
 //PSEDU FROM SPEC
 /////////////////////////////////////////////////////////////
 
+orderLinePR::orderLinePR() {}
 orderLinePR::orderLinePR(orderLinePR &op) : gen(op.random_seed),
 clients('a', op.lastClient), equities('A', op.lastEquity),
 arrivals(op.arrivalRate), price(2,11), quantity(1,30) {}

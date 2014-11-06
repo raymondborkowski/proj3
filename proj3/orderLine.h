@@ -14,9 +14,9 @@
 #include <random>
 
 struct orderLine{
-    std::string client_name = NULL;
-    std::string buyOrSell = NULL;
-    std::string equitySymbol = NULL;
+    std::string client_name;
+    std::string buyOrSell;
+    std::string equitySymbol;
     unsigned int timestamp = 0;
     unsigned int price = 0;
     unsigned int quantity = 0;
@@ -41,6 +41,7 @@ struct orderLinePR{
     std::uniform_int_distribution<> quantity;
     orderLinePR(orderLinePR & op);
     orderLine order();
+    orderLinePR();
     
 };
 

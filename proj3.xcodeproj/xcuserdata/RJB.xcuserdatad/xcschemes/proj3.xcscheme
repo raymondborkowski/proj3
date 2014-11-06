@@ -75,12 +75,12 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "TLinput.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"
             value = "PRinput.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

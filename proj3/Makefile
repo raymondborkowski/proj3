@@ -10,7 +10,7 @@ SOURCES     = $(wildcard *.cpp)
 # list of objects used in project
 OBJECTS        = $(SOURCES:%.cpp=%.o)
 # name of the executable produced by the top level
-EXECUTABLE     = MINEFILE
+EXECUTABLE     = market
 # name of the tar ball created for submission
 SUBMIT_FILE = submit.tar.gz
 
@@ -37,7 +37,7 @@ $(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXECUTABLE)
 
 # individual dependencies for objects
 # YOU NEED TO ADD YOUR OWN DEPENDENCIES HERE!!!
-main.o: main.cpp commandLine.cpp commandLine.h
+main.o: main.cpp commandLine.cpp commandLine.h errorChecking.cpp orderLine.cpp pseduRando.cpp
 
 # rule for creating objects
 %.o:
