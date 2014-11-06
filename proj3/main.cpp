@@ -8,12 +8,13 @@
 
 #include <iostream>
 #include "commandLine.h"
+#include "orderLine.h"
 #include "errorChecking.h"
 #include <fstream>
 
 int main(int argc, char ** argv) {
     
-  //  ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     ifstream arq(getenv("MYARQ"));
     cin.rdbuf(arq.rdbuf());
     flagOptions op;
@@ -21,14 +22,13 @@ int main(int argc, char ** argv) {
     cout<<op.mapType<<endl;
     
     if(op.mapType == "PR"){
-        pseudo
+        orderLineReadPR();
     }
     else if(op.mapType == "TL"){
-        
+        orderLineRead();
     }
     else
         exit(1);
-    
     
     return 0;
 }

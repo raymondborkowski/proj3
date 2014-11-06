@@ -7,14 +7,17 @@
 //
 
 #include "orderLine.h"
+#include "pseduRando.h"
+#include <string>
 
 orderLine orderLineRead(){
-    orderLine * orderOp = new orderLine;
+    orderLine * orderOp;
     std::string temp;
     char tempChar;
     unsigned int intTemp;
     
-    std::cin>>intTemp;
+    std::cin>>temp;
+    intTemp = stoi(temp);
     errorCheckTimestamp(intTemp);
     orderOp->timestamp = intTemp;
     
@@ -31,15 +34,53 @@ orderLine orderLineRead(){
     orderOp->equitySymbol = temp;
     
     std::cin>>tempChar;
-    std::cin>>intTemp;
+    intTemp = 1;
+    errorCheckPrice(tempChar, intTemp);
+    std::cin>>temp;
+    intTemp = stoi(temp);
     errorCheckPrice(tempChar, intTemp);
     orderOp->price = intTemp;
     
     std::cin>>tempChar;
-    std::cin>>intTemp;
+    std::cin>>temp;
+    intTemp = stoi(temp);
     errorCheckQuantity(tempChar, intTemp);
     orderOp->quantity = intTemp;
     
+    
+    return *orderOp;
+}
+orderLinePR orderLineReadPR(){
+    orderLinePR * orderOp;
+    std::string inputPr;
+    double j;
+    char i;
+    
+    std::cin>>inputPr;
+    std::cin>>inputPr;
+    orderOp->random_seed = stoi(inputPr);
+
+    std::cin>>inputPr;
+    std::cin>>inputPr;
+    orderOp->numOfOrders = stoi(inputPr);
+    
+    std::cin>>inputPr;
+    std::cin>>i;
+    isAlpha(i);
+    orderOp->lastClient = i;
+    
+    std::cin>>inputPr;
+    std::cin>>i;
+    isAlpha(i);
+    orderOp->lastEquity = i;
+    
+    std::cin>>inputPr;
+    std::cin>>inputPr;
+    j = std::stod(inputPr);
+    orderOp->arrivalRate = j;
+    
+    orderLinePR op(*orderOp);
+
     
     return *orderOp;
 }

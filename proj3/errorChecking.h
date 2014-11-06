@@ -18,6 +18,6 @@ bool errorCheckQuantity(char hashTag, unsigned int quantity);
 bool errorCheckBuyOrSell(std::string buyOrSell);
 bool errorCheckClient(std::string client);
 bool errorCheckEquitySymbol(std::string equitySymbol);
-
+bool isAlpha(char x);
 
 #endif /* defined(__proj3__errorChecking__) */

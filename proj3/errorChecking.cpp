@@ -51,3 +51,9 @@ bool errorCheckEquitySymbol(std::string equitySymbol){
     }
     return true;
 }
+bool isAlpha(char x){
+    if(isalpha(x))
+        return true;
+    else
+        exit(1);
+}
