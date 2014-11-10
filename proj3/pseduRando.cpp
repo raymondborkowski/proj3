@@ -29,7 +29,7 @@ orderLine orderLinePR::order() {
     op.equitySymbol = std::string("E_") + equities(gen);
     op.price = 5 * price(gen); //10-55
     op.quantity = quantity(gen); //1-30
-
+    
     return op;
 }
 orderLinePR::orderLinePR() {}

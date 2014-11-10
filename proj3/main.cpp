@@ -22,7 +22,7 @@ int main(int argc, char ** argv) {
     op = getopt(argc, argv);
     orderLine newOrder;
     orderLinePR pp;
-    int count = 0;
+    unsigned   int count = 0;
     
     //PR Read in
     if(op.mapType == true){

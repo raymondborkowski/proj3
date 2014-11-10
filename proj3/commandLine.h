@@ -8,7 +8,7 @@
 
 #ifndef __proj3__commandLine__
 #define __proj3__commandLine__
-
+#include <climits>
 #include <stdio.h>
 #include <iostream>
 #include <random>
@@ -26,6 +26,7 @@ struct medianT{
     int span=0;
     int getMedian(){return median;}
 };
+
 struct compare{
     bool reverse;
     compare(const bool& rev=false) {
@@ -39,8 +40,8 @@ typedef priority_queue<orderLine*, Orders, compare> orderQueue;
 struct equityT{
     orderQueue buy;
     orderQueue sell;
-    int blimit;
-    int slimit;
+    unsigned int blimit;
+    unsigned int slimit;
     void insertEq(orderLine);
     equityT() :
     sell(compare(true)), blimit(-1), slimit(INT_MAX) {}

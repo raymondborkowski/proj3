@@ -9,7 +9,7 @@
 #include "errorChecking.h"
 
 bool errorCheck(int time, char dollarSign,  int price, char hashTag,  int quantity, std::string buyOrSell, std::string client, std::string equitySymbol){
-     int zero = 0;
+    int zero = 0;
     if(time < zero )
         exit(1);
     if(dollarSign != '$')
