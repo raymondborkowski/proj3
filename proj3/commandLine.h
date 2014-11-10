@@ -26,7 +26,6 @@ struct medianT{
     int span=0;
     int getMedian(){return median;}
 };
-
 struct compare{
     bool reverse;
     compare(const bool& rev=false) {
