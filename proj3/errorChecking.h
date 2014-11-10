@@ -11,13 +11,8 @@
 
 #include <stdio.h>
 #include <iostream>
-
-bool errorCheckTimestamp(unsigned int time);
-bool errorCheckPrice(char dollarSign, unsigned int price);
-bool errorCheckQuantity(char hashTag, unsigned int quantity);
-bool errorCheckBuyOrSell(std::string buyOrSell);
-bool errorCheckClient(std::string client);
-bool errorCheckEquitySymbol(std::string equitySymbol);
+bool errorCheck( int time, char dollarSign,  int price, char hashTag,  int quantity, std::string buyOrSell, std::string client, std::string equitySymbol);
 bool isAlpha(char x);
+bool isAlpha1(char x);
 
 #endif /* defined(__proj3__errorChecking__) */

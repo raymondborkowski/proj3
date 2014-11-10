@@ -59,8 +59,8 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-v &lt; test.txt"
-            isEnabled = "NO">
+            argument = "-m"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-q --output M &lt; /Users/RJB/Documents/classes/eecs281/project1/project1/test.txt"

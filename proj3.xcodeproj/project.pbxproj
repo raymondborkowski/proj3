@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		344D81B71A0AE06D00D6767A /* pseduRando.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344D81B51A0AE06D00D6767A /* pseduRando.cpp */; };
+		344D81BA1A1037EB00D6767A /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344D81B81A1037EB00D6767A /* map.cpp */; };
 		347F278E1A008615003C9EE0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347F278D1A008615003C9EE0 /* main.cpp */; };
 		347F27961A0086D3003C9EE0 /* commandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347F27941A0086D3003C9EE0 /* commandLine.cpp */; };
 		347F27981A009E88003C9EE0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 347F27971A009E88003C9EE0 /* Makefile */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		344D81B51A0AE06D00D6767A /* pseduRando.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pseduRando.cpp; sourceTree = "<group>"; };
+		344D81B81A1037EB00D6767A /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
+		344D81B91A1037EB00D6767A /* map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
 		347F278A1A008615003C9EE0 /* proj3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = proj3; sourceTree = BUILT_PRODUCTS_DIR; };
 		347F278D1A008615003C9EE0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		347F27941A0086D3003C9EE0 /* commandLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandLine.cpp; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				347F278D1A008615003C9EE0 /* main.cpp */,
+				344D81B81A1037EB00D6767A /* map.cpp */,
+				344D81B91A1037EB00D6767A /* map.h */,
 				347F27941A0086D3003C9EE0 /* commandLine.cpp */,
 				347F27951A0086D3003C9EE0 /* commandLine.h */,
 				347F279A1A01D22A003C9EE0 /* errorChecking.cpp */,
@@ -146,6 +151,7 @@
 				347F279C1A01D22A003C9EE0 /* errorChecking.cpp in Sources */,
 				347F27981A009E88003C9EE0 /* Makefile in Sources */,
 				3494D5FF1A09EE9200699658 /* orderLine.cpp in Sources */,
+				344D81BA1A1037EB00D6767A /* map.cpp in Sources */,
 				347F278E1A008615003C9EE0 /* main.cpp in Sources */,
 				344D81B71A0AE06D00D6767A /* pseduRando.cpp in Sources */,
 				347F27961A0086D3003C9EE0 /* commandLine.cpp in Sources */,

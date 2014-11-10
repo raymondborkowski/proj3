@@ -20,6 +20,7 @@ flagOptions getopt(int argc, char ** argv){
         {"help", no_argument, NULL, 'h'}
     };
     flagOptions op;
+    string mapTypeTemp;
     int opt = 0, index = 0;
     while((opt = getopt_long (argc, argv, "svmti:g:h", longOpts, &index)) != -1){
         switch(opt) {
@@ -53,7 +54,31 @@ flagOptions getopt(int argc, char ** argv){
                 exit(0);
         }
     }
-    cin>>op.mapType;
+    cin>>mapTypeTemp;
+    if(mapTypeTemp == "PR")
+        op.mapType = true;
     
     return op;
+}
+
+bool compare::comp(orderLine* a, orderLine* b) const {
+    
+    if(a->price < b->price)
+        return true;
+    else if(b->price < a->price)
+        return false;
+    else{
+        if(reverse)
+            return b->position > a->position;
+        else
+            return a->position > b->position;
+    }
+}
+
+bool compare::operator()(orderLine* a, orderLine* b) const {
+    
+    if(reverse)
+        return comp(b, a);
+    
+    return comp(a, b);
 }

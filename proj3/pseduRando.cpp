@@ -11,8 +11,8 @@
 //PSEDU FROM SPEC
 /////////////////////////////////////////////////////////////
 
-orderLinePR::orderLinePR() {}
-orderLinePR::orderLinePR(orderLinePR &op) : gen(op.random_seed),
+
+orderLinePR::orderLinePR(pr &op) : gen(op.random_seed),
 clients('a', op.lastClient), equities('A', op.lastEquity),
 arrivals(op.arrivalRate), price(2,11), quantity(1,30) {}
 
@@ -21,18 +21,15 @@ double orderLinePR::timestamp = 0;
 
 orderLine orderLinePR::order() {
     orderLine op = *new orderLine;
-    
     op.timestamp = orderLinePR::timestamp;
     orderLinePR::timestamp += floor(arrivals(gen) + .5);
-    
     op.client_name = std::string("C_") + clients(gen);
     //Range of possible client names is thus 'C_a' to 'C_z'.
     op.buyOrSell = (buy_or_sell(gen) ? "BUY" : "SELL");
     op.equitySymbol = std::string("E_") + equities(gen);
     op.price = 5 * price(gen); //10-55
     op.quantity = quantity(gen); //1-30
-  //  op.position = pseduRando::ID++;
 
     return op;
-    
 }
+orderLinePR::orderLinePR() {}

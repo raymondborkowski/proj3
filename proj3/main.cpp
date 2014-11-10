@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "commandLine.h"
+#include "map.h"
 #include "orderLine.h"
 #include "errorChecking.h"
 #include <fstream>
@@ -19,16 +20,31 @@ int main(int argc, char ** argv) {
     cin.rdbuf(arq.rdbuf());
     flagOptions op;
     op = getopt(argc, argv);
-    cout<<op.mapType<<endl;
+    orderLine newOrder;
+    orderLinePR pp;
+    int count = 0;
     
-    if(op.mapType == "PR"){
-        orderLineReadPR();
+    //PR Read in
+    if(op.mapType == true){
+        pp = orderLineReadPR();
+        newOrder = pp.order();
     }
-    else if(op.mapType == "TL"){
-        orderLineRead();
+    //TL Read in
+    int x;
+    while(cin>>x){
+        if(op.mapType == false){
+            newOrder = orderLineRead(x);
+        }
+        cout<<newOrder.client_name<<endl;
+        if(count != newOrder.timestamp){
+            if(op.median == true){
+                op.printMedian(count);
+                count = newOrder.timestamp;
+            }
+            newOrder.position = count;
+        }
+        op.insertDistribution(newOrder);
     }
-    else
-        exit(1);
     
     return 0;
 }

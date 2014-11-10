@@ -23,15 +23,18 @@ struct orderLine{
     unsigned int position = 0;
     
 };
-struct orderLinePR{
+struct pr{
     unsigned int random_seed;
     unsigned int numOfOrders;
     char lastClient;
     char lastEquity;
     double arrivalRate;
+    unsigned int ID;
+    double timestamp;
+};
+struct orderLinePR{
     static unsigned int ID;
     static double timestamp;
-    
     std::mt19937 gen;
     std::uniform_int_distribution<char> clients;
     std::uniform_int_distribution<char> equities;
@@ -39,13 +42,13 @@ struct orderLinePR{
     std::bernoulli_distribution buy_or_sell;
     std::uniform_int_distribution<> price;
     std::uniform_int_distribution<> quantity;
-    orderLinePR(orderLinePR & op);
+    orderLinePR(pr &op);
     orderLine order();
     orderLinePR();
     
 };
 
-orderLine orderLineRead();
+orderLine orderLineRead(int);
 orderLinePR orderLineReadPR();
 
 #endif /* defined(__proj3__readInLines__) */

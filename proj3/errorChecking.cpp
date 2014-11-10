@@ -8,51 +8,42 @@
 
 #include "errorChecking.h"
 
-bool errorCheckTimestamp(unsigned int time){
-    unsigned int zero = 0;
-    if(time >= zero )
-        return true;
-    exit(1);
-}
-bool errorCheckPrice(char dollarSign, unsigned int price){
+bool errorCheck(int time, char dollarSign,  int price, char hashTag,  int quantity, std::string buyOrSell, std::string client, std::string equitySymbol){
+     int zero = 0;
+    if(time < zero )
+        exit(1);
     if(dollarSign != '$')
         exit(1);
-    if(price > 0)
-        return true;
-    exit(1);
-}
-bool errorCheckQuantity(char hashTag, unsigned int quantity){
+    if(price <= 0)
+        exit(1);
     if(hashTag != '#')
         exit(1);
-    if(quantity > 0)
-        return true;
-    exit(1);
+    if(quantity <= 0)
+        exit(1);
+    if(buyOrSell != "BUY" && buyOrSell != "SELL")
+        exit(1);
+    for(unsigned int i = 0; i < client.length(); i++){
+        if(!isalnum(client[i]) && client[i] != '_')
+            exit(1);
+    }
+    size_t length = equitySymbol.length();
+    if(length < 1 || length > 5)
+        exit(1);
+    for(size_t j = 0; j < length; j++){
+        if(!isalnum(equitySymbol[j]) && equitySymbol[j] != '_' && equitySymbol[j] != '.')
+            exit(1);
+    }
+    
+    return true;
 }
-bool errorCheckBuyOrSell(std::string buyOrSell){
-    if(buyOrSell == "BUY" || buyOrSell == "SELL")
+bool isAlpha(char x){
+    if(islower(x))
         return true;
     else
         exit(1);
 }
-bool errorCheckClient(std::string client){
-    for(int i = 0; i < client.length(); i++){
-        if(!isalnum(client[i]) && client[i] != '_')
-            exit(1);
-    }
-    return true;
-}
-bool errorCheckEquitySymbol(std::string equitySymbol){
-    size_t length = equitySymbol.length();
-    if(length < 1 || length > 5)
-        exit(1);
-    for(size_t i = 0; i < length; i++){
-        if(!isalnum(equitySymbol[i]) && equitySymbol[i] != '_' && equitySymbol[i] != '.')
-            exit(1);
-    }
-    return true;
-}
-bool isAlpha(char x){
-    if(isalpha(x))
+bool isAlpha1(char x){
+    if(isupper(x))
         return true;
     else
         exit(1);

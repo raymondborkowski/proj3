@@ -9,51 +9,44 @@
 #include "orderLine.h"
 #include <string>
 
-orderLine orderLineRead(){
+orderLine orderLineRead(int x){
     orderLine orderOp;
-    std::string temp;
-    char tempChar;
-    unsigned int intTemp;
-    
+    std::string temp, temp1, temp2, temp3;
+    char tempChar1, tempChar2;
+    int intTemp1, intTemp2,intTemp3, intTemp4;
+    intTemp1 = x;
+    std::cin>>temp1;
+    std::cin>>temp2;
+    std::cin>>temp3;
+    std::cin>>tempChar1;
+    if(tempChar1 != '$')
+        exit(1);
+    intTemp2 = 1;
     std::cin>>temp;
-    intTemp = stoi(temp);
-    errorCheckTimestamp(intTemp);
-    orderOp.timestamp = intTemp;
-    
+    intTemp3 = stoi(temp);
+    std::cin>>tempChar2;
+    if(tempChar2 !='#')
+        exit(1);
     std::cin>>temp;
-    errorCheckClient(temp);
-    orderOp.client_name = temp;
-
-    std::cin>>temp;
-    errorCheckBuyOrSell(temp);
-    orderOp.buyOrSell = temp;
+    intTemp4 = stoi(temp);
+    errorCheck(intTemp1, tempChar1, intTemp3, tempChar2, intTemp4, temp2, temp1, temp3);
     
-    std::cin>>temp;
-    errorCheckEquitySymbol(temp);
-    orderOp.equitySymbol = temp;
+     orderOp.timestamp = intTemp1;
+     orderOp.client_name = temp1;
+     orderOp.buyOrSell = temp2;
+     orderOp.equitySymbol = temp3;
+     orderOp.price = intTemp3;
+     orderOp.quantity = intTemp4;
     
-    std::cin>>tempChar;
-    intTemp = 1;
-    errorCheckPrice(tempChar, intTemp);
-    std::cin>>temp;
-    intTemp = stoi(temp);
-    errorCheckPrice(tempChar, intTemp);
-    orderOp.price = intTemp;
+    orderLine * pp = new orderLine;
+    *pp = orderOp;
     
-    std::cin>>tempChar;
-    std::cin>>temp;
-    intTemp = stoi(temp);
-    errorCheckQuantity(tempChar, intTemp);
-    orderOp.quantity = intTemp;
-    
-    
-    return orderOp;
+    return *pp;
 }
 orderLinePR orderLineReadPR(){
-    orderLinePR orderOp;
+    pr orderOp;
     std::string inputPr;
     double j;
-    char i;
     
     std::cin>>inputPr;
     std::cin>>inputPr;
@@ -64,22 +57,25 @@ orderLinePR orderLineReadPR(){
     orderOp.numOfOrders = stoi(inputPr);
     
     std::cin>>inputPr;
-    std::cin>>i;
-    isAlpha(i);
-    orderOp.lastClient = i;
+    std::cin>>inputPr;
+    if(inputPr.length() > 1)
+        exit(1);
+    isAlpha(inputPr[0]);
+    orderOp.lastClient = inputPr[0];
     
     std::cin>>inputPr;
-    std::cin>>i;
-    isAlpha(i);
-    orderOp.lastEquity = i;
+    std::cin>>inputPr;
+    if(inputPr.length() > 1)
+        exit(1);
+    isAlpha1(inputPr[0]);
+    orderOp.lastEquity = inputPr[0];
     
     std::cin>>inputPr;
     std::cin>>inputPr;
     j = std::stod(inputPr);
     orderOp.arrivalRate = j;
     
-    orderLinePR op(orderOp);
-
+    orderLinePR pp(orderOp);
     
-    return orderOp;
+    return pp;
 }
