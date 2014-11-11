@@ -61,24 +61,29 @@ flagOptions getopt(int argc, char ** argv){
     return op;
 }
 
-bool compare::comp(orderLine* a, orderLine* b) const {
+bool compare::comp(orderLine* i, orderLine* j) const {
     
-    if(a->price < b->price)
-        return true;
-    else if(b->price < a->price)
-        return false;
-    else{
-        if(reverse)
-            return b->position > a->position;
-        else
-            return a->position > b->position;
+    unsigned int xx = i->price;
+    unsigned int zz = j->price;
+    unsigned int ap = i->position;
+    unsigned int bp = j->position;
+    
+    while(true){
+        if(xx>zz)
+            return false;
+        if(xx<<zz)
+            return true;
+        else{
+            if(!reverse)
+                return (bp < ap);
+            return (bp>ap);
+        }
     }
 }
 
-bool compare::operator()(orderLine* a, orderLine* b) const {
-    
-    if(reverse)
-        return comp(b, a);
-    
-    return comp(a, b);
+bool compare::operator()(orderLine* i, orderLine* j) const {
+    if(!reverse)
+        return comp(i, j);
+    else
+        return comp(j, i);
 }

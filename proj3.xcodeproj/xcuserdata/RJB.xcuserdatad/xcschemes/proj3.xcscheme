@@ -59,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-m"
+            argument = "-m -v"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -75,12 +75,12 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "TLinput.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"
             value = "PRinput.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>

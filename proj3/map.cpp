@@ -15,7 +15,7 @@ void flagOptions::printMedian(int x){
 }
 void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, int> xx){
     if(verbose==true)
-        cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"share\n";
+        cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"/"<<"share\n";
 }
 void insertTransfer(){
     
@@ -115,10 +115,10 @@ void flagOptions::insertDistribution(orderLine* newOrder){
         medianMap[newOrder->equitySymbol];
     }
 }
-void flagOptions::runThru(){
+void flagOptions::runThru(bool x){
     int zero = 0;
     for(auto it : eqMap) {
-        if(completeTrade(it) != zero) {
+        if(completeTrade(it, x) != zero) {
             last = it.first;
             if(median)
                 medianSet.insert(it.first);
@@ -130,7 +130,7 @@ void flagOptions::runThru(){
     }
 }
 
-int flagOptions::completeTrade(pair<string, equityT*> op){
+int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
 
     int returnValue = 0;
     bool trueOrFalse = true;
@@ -147,6 +147,10 @@ int flagOptions::completeTrade(pair<string, equityT*> op){
             seller = op.second->sell.top();
             pp.first = buyer->client_name;
             pp.second = seller->client_name;
+            if(x == true){
+                buyer->timestamp = buyer->position;
+                seller->timestamp = seller->position;
+            }
             if(buyer->timestamp < seller->timestamp)
                 xx.second = buyer->price;
             else if(buyer->timestamp >= seller->timestamp)

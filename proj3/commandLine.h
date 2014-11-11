@@ -31,8 +31,8 @@ struct compare{
     compare(const bool& rev=false) {
         reverse = rev;
     }
-    bool comp(orderLine* a, orderLine* b) const;
-    bool operator()(orderLine* a, orderLine* b) const;
+    bool comp(orderLine*, orderLine*) const;
+    bool operator()(orderLine*, orderLine*) const;
 };
 typedef vector<orderLine* > Orders;
 typedef priority_queue<orderLine*, Orders, compare> orderQueue;
@@ -56,7 +56,7 @@ struct flagOptions{
     int median1=0;
     int span=0;
     int getMedian(){return median1;}
-    int completeTrade(pair<string, equityT*> op);
+    int completeTrade(pair<string, equityT*> op, bool);
     flagOptions() : median1(0), span(0) {}
     void getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue);
     void insertMedian(int i);
@@ -71,7 +71,7 @@ struct flagOptions{
     bool summary = false;
     bool verbose = false;
     bool median = false;
-    void runThru();
+    void runThru(bool);
     unordered_map<string, flagOptions> medianMap;
     set< string > medianSet;
     bool transfers = false;

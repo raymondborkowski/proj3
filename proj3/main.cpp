@@ -41,7 +41,7 @@ int main(int argc, char ** argv) {
             op->insertDistribution(newOrder);
             //5. Process all possible trades with the information in your data structures (match buyers to sellers). If any
             //      orders cannot be filled, you should leave them in your data structures to match with future orders.
-            op->runThru();
+            op->runThru(test1);
         }
     }
 
@@ -62,7 +62,7 @@ int main(int argc, char ** argv) {
         op->insertDistribution(newOrder);
         //5. Process all possible trades with the information in your data structures (match buyers to sellers). If any
         //      orders cannot be filled, you should leave them in your data structures to match with future orders.
-        op->runThru();
+        op->runThru(test1);
         
     }
     if(op->median == true)
