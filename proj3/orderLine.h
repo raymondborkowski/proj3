@@ -12,15 +12,16 @@
 #include <stdio.h>
 #include "errorChecking.h"
 #include <random>
+using namespace std;
 
 struct orderLine{
     std::string client_name;
     std::string buyOrSell;
     std::string equitySymbol;
-    unsigned int timestamp = 0;
-    unsigned int price = 0;
-    unsigned int quantity = 0;
-    unsigned int position = 0;
+    unsigned int timestamp;
+    unsigned int price;
+    unsigned int quantity;
+    unsigned int position;
     
 };
 struct pr{
@@ -33,22 +34,22 @@ struct pr{
     double timestamp;
 };
 struct orderLinePR{
-    static unsigned int ID;
+    static unsigned int pos;
     static double timestamp;
-    std::mt19937 gen;
-    std::uniform_int_distribution<char> clients;
-    std::uniform_int_distribution<char> equities;
-    std::exponential_distribution<> arrivals;
-    std::bernoulli_distribution buy_or_sell;
-    std::uniform_int_distribution<> price;
-    std::uniform_int_distribution<> quantity;
+    mt19937 gen;
+    uniform_int_distribution<char> clients;
+    uniform_int_distribution<char> equities;
+    exponential_distribution<double> arrivals;
+    bernoulli_distribution buy_or_sell;
+    uniform_int_distribution<int> price;
+    uniform_int_distribution<int> quantity;
     orderLinePR(pr &op);
-    orderLine order();
+    orderLine* order();
     orderLinePR();
     
 };
 
-orderLine orderLineRead(int);
-orderLinePR orderLineReadPR();
+orderLine * orderLineRead(int);
+orderLinePR orderLineReadPR(int& );
 
 #endif /* defined(__proj3__readInLines__) */

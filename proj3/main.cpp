@@ -1,4 +1,4 @@
-//
+  //
 //  main.cpp
 //  proj3
 //
@@ -18,33 +18,57 @@ int main(int argc, char ** argv) {
     ios_base::sync_with_stdio(false);
     ifstream arq(getenv("MYARQ"));
     cin.rdbuf(arq.rdbuf());
-    flagOptions op;
-    op = getopt(argc, argv);
-    orderLine newOrder;
+    flagOptions* op = new flagOptions;
+    *op = getopt(argc, argv);
+    orderLine* newOrder = nullptr;
     orderLinePR pp;
-    unsigned   int count = 0;
-    
+    int countOrders = 1;
+    int count = 0;
+    bool test1 = op->mapType;
     //PR Read in
-    if(op.mapType == true){
-        pp = orderLineReadPR();
-        newOrder = pp.order();
+    if(test1 == true){
+        pp = orderLineReadPR(countOrders);
+        while(countOrders > 0){
+            countOrders-=1;
+            newOrder = pp.order();
+            if(count != newOrder->timestamp){
+                if(op->median == true){
+                    op->printMedian(count);
+                    count = newOrder->timestamp;
+                }
+                
+            }
+            op->insertDistribution(newOrder);
+            //5. Process all possible trades with the information in your data structures (match buyers to sellers). If any
+            //      orders cannot be filled, you should leave them in your data structures to match with future orders.
+            op->runThru();
+        }
     }
+
     //TL Read in
     int x;
     while(cin>>x){
-        if(op.mapType == false){
+        if(test1 == false){
             newOrder = orderLineRead(x);
         }
-        cout<<newOrder.client_name<<endl;
-        if(count != newOrder.timestamp){
-            if(op.median == true){
-                op.printMedian(count);
-                count = newOrder.timestamp;
+        if(count != newOrder->timestamp){
+            if(op->median == true){
+                op->printMedian(count);
+                count = newOrder->timestamp;
             }
-            newOrder.position = count;
+            
         }
-        op.insertDistribution(newOrder);
+        //4. Add the order from step 2 to your data structures.
+        op->insertDistribution(newOrder);
+        //5. Process all possible trades with the information in your data structures (match buyers to sellers). If any
+        //      orders cannot be filled, you should leave them in your data structures to match with future orders.
+        op->runThru();
+        
     }
+    if(op->median == true)
+        op->printMedian(count);
+    
+    cout<<"--End of Day--\n";
     
     return 0;
 }

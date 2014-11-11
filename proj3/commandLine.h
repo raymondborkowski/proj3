@@ -14,17 +14,16 @@
 #include <random>
 #include "map.h"
 #include <map>
+#include <unordered_map>
 #include "orderLine.h"
 #include <queue>
 #include<set>
 #include "errorChecking.h"
 #include "getopt.h"
 using namespace std;
-struct medianT{
-    //I will need to write a function to get median
-    int median=0;
-    int span=0;
-    int getMedian(){return median;}
+struct whileStuff{
+    bool trueOrFalse;
+    int returnValue;
 };
 
 struct compare{
@@ -40,38 +39,55 @@ typedef priority_queue<orderLine*, Orders, compare> orderQueue;
 struct equityT{
     orderQueue buy;
     orderQueue sell;
-    unsigned int blimit;
-    unsigned int slimit;
-    void insertEq(orderLine);
+     int blimit;
+    whileStuff whileStufff(orderLine* buyer, orderLine* seller);
+     int slimit;
     equityT() :
     sell(compare(true)), blimit(-1), slimit(INT_MAX) {}
     bool empty() {return (buy.empty() || sell.empty());}
+    void insertEq(orderLine*);
+
 };
-struct prioQueue{
+
+typedef vector<orderLine* > Orders;
+typedef priority_queue<orderLine*, Orders, compare> orderQueue;
+struct flagOptions{
+
+    int median1=0;
+    int span=0;
+    int getMedian(){return median1;}
+    int completeTrade(pair<string, equityT*> op);
+    flagOptions() : median1(0), span(0) {}
+    void getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue);
+    void insertMedian(int i);
+    void printVerbose(orderLine* buyer, orderLine*, pair<int, int>);
+    string last;
+    pair<string, string> pp;
+    pair<int, int> xx;
+
+    
     priority_queue<int> maxQueue;
     priority_queue<int, vector<int>, greater<int>> minQueue;
-};
-typedef vector<orderLine* > Orders;
-struct flagOptions{
     bool summary = false;
     bool verbose = false;
     bool median = false;
+    void runThru();
+    unordered_map<string, flagOptions> medianMap;
+    set< string > medianSet;
     bool transfers = false;
+    void printMedian(int x);
+   
     bool insiders = false;
     bool ttt = false;
     void insert(orderLine);
-    string last;
     bool mapType = false;
-    void insertDistribution(orderLine newOrder);
-    
-    map<string, medianT> medianMap;
-    set< string > medianSet;
-    map< string, equityT > eqMap;
+    void insertDistribution(orderLine* newOrder);
+    unordered_map< string, equityT* > eqMap;
     set<string> insider;
-    void printMedian(int);
+
     
 };
 flagOptions getopt(int argc, char ** argv);
-
+bool isEmpty(pair<string, equityT*> op);
 
 #endif /* defined(__proj3__commandLine__) */

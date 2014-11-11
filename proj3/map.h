@@ -16,8 +16,7 @@
 #include "commandLine.h"
 #include "orderLine.h"
 
-void getMedian();
 //calls getMedian
-void insertMedian(int i);
+
 
 #endif /* defined(__proj3__map__) */
