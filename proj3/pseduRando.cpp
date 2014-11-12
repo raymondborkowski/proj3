@@ -11,11 +11,6 @@
 //PSEDU FROM SPEC
 /////////////////////////////////////////////////////////////
 
-
-orderLinePR::orderLinePR(pr &op) : gen(op.random_seed),
-clients('a', op.lastClient), equities('A', op.lastEquity),
-arrivals(op.arrivalRate), price(2,11), quantity(1,30) {}
-
 unsigned int orderLinePR::pos = 0;
 double orderLinePR::timestamp = 0;
 
@@ -43,4 +38,3 @@ orderLine* orderLinePR::order() {
     op->position = orderLinePR::pos++;
     return op;
 }
-orderLinePR::orderLinePR() {}

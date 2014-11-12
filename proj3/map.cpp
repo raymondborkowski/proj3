@@ -14,8 +14,11 @@ void flagOptions::printMedian(int x){
     }
 }
 void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, int> xx){
-    if(verbose==true)
+    if(verbose==true){
+        if(xx.first == 0)
+            return;
         cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"/"<<"share\n";
+    }
 }
 //I need to set max and min prio queues
 void med::getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue){
@@ -198,9 +201,9 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
                 buyer->timestamp = buyer->position;
                 seller->timestamp = seller->position;
             }
-            if(buyer->timestamp < seller->timestamp)
+            if(buyer->position < seller->position)
                 xx.second = buyer->price;
-            else if(buyer->timestamp >= seller->timestamp)
+            else if(buyer->position >= seller->position)
                 xx.second = seller->price;
             if(buyer->quantity <= seller->quantity){
                 xx.first = buyer->quantity;
@@ -249,3 +252,6 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
     }
     return returnValue;
 }
+
+
+

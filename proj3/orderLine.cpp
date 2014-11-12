@@ -11,7 +11,7 @@
 
 orderLine * orderLineRead(int x){
     orderLine orderOp;
-    
+    static int pos= 0;
     std::string temp, temp1, temp2, temp3;
     char tempChar1, tempChar2;
     int intTemp1,intTemp3, intTemp4;
@@ -38,7 +38,7 @@ orderLine * orderLineRead(int x){
     orderOp.equitySymbol = temp3;
     orderOp.price = intTemp3;
     orderOp.quantity = intTemp4;
-    
+    orderOp.position = pos++;
     orderLine * pp = new orderLine;
     *pp = orderOp;
     

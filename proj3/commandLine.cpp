@@ -63,27 +63,77 @@ flagOptions getopt(int argc, char ** argv){
 
 bool compare::comp(orderLine* i, orderLine* j) const {
     
-    unsigned int xx = i->price;
-    unsigned int zz = j->price;
-    unsigned int ap = i->position;
-    unsigned int bp = j->position;
+    unsigned int a = i->price;
+    unsigned int b = j->price;
+    unsigned int c = i->position;
+    unsigned int d = j->position;
     
     while(true){
-        if(xx>zz)
-            return false;
-        if(xx<<zz)
-            return true;
-        else{
-            if(!reverse)
-                return (bp < ap);
-            return (bp>ap);
+        if(b == a){
+            if(reverse){
+                if(d > c)
+                    return true;
+                return false;
+            }
+            else{
+                if(c > d)
+                    return true;
+                return false;
+            }
         }
+        else if(a < b)
+            return true;
+        return false;
     }
 }
 
 bool compare::operator()(orderLine* i, orderLine* j) const {
-    if(!reverse)
-        return comp(i, j);
-    else
-        return comp(j, i);
+    if(!reverse){
+        unsigned int a = i->price;
+        unsigned int b = j->price;
+        unsigned int c = i->position;
+        unsigned int d = j->position;
+        
+        while(true){
+            if(b == a){
+                if(reverse){
+                    if(d > c)
+                        return true;
+                    return false;
+                }
+                else{
+                    if(c > d)
+                        return true;
+                    return false;
+                }
+            }
+            else if(a < b)
+                return true;
+            return false;
+        }
+    }
+    else{
+        unsigned int a = j->price;
+        unsigned int b = i->price;
+        unsigned int c = j->position;
+        unsigned int d = i->position;
+        
+        while(true){
+            if(b == a){
+                if(reverse){
+                    if(d > c)
+                        return true;
+                    return false;
+                }
+                else{
+                    if(c > d)
+                        return true;
+                    return false;
+                }
+            }
+            else if(a < b)
+                return true;
+            return false;
+        }
+    }
 }

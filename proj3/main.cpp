@@ -22,6 +22,7 @@ int main(int argc, char ** argv) {
     *op = getopt(argc, argv);
     orderLine* newOrder = nullptr;
     orderLinePR pp;
+    
     int countOrders = 1;
     unsigned  int count = 0;
     bool test1 = op->mapType;
@@ -71,12 +72,10 @@ int main(int argc, char ** argv) {
     cout<<"---End of Day---\n";
     
     if(op->summary == true){
-        cout<<"Commission Earnings: $"<<op->getcomis()<<"\n";
-        cout<<"Total Amount of Money Transferred: $"<<op->gettrans()<<"\n";
-        cout<<"Number of Completed Trades: "<<op->getCompleted()<<"\n";
-        cout<<"Number of Shares Traded: "<<op->getShares()<<"\n";
+        cout<<"Commission Earnings: $"<<op->getcomis()<<"\n"<<"Total Amount of Money Transferred: $"<<op->gettrans()<<"\n";
+        cout<<"Number of Completed Trades: "<<op->getCompleted()<<"\n"<<"Number of Shares Traded: "<<op->getShares()<<"\n";
     }
-    if(op->transfer){
+    if(op->transfers){
         for(auto it = op->transferS.begin(); it != op->transferS.end(); ++it){
             med clientt = op->transferM[*it];
             cout << *it << " bought " << clientt.transferBuy<< " and sold " << clientt.transferSell  << " for a net transfer of $" << clientt.transferTotal << "\n";
