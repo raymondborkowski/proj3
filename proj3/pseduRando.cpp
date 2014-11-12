@@ -20,14 +20,25 @@ unsigned int orderLinePR::pos = 0;
 double orderLinePR::timestamp = 0;
 
 orderLine* orderLinePR::order() {
+    
     orderLine* op = new orderLine;
+    //TIMESTAMP := GENERATOR_TIMESTAMP
     op->timestamp = orderLinePR::timestamp;
+    //GENERATOR_TIMESTAMP := GENERATOR_TIMESTAMP + floor(arrivals(gen) + .5)
     orderLinePR::timestamp += floor(arrivals(gen) + .5);
+    //CLIENT_NAME := string("C_") + clients(gen)
+    //Range of possible client names is thus 'C_a' to 'C_z'.
     op->client_name = std::string("C_") + clients(gen);
     //Range of possible client names is thus 'C_a' to 'C_z'.
+    //Range of possible equity names is thus "E_A" to "E_Z".
+    //BUY_OR_SELL := (buy_or_sell(gen) ? BUY : SELL)
     op->buyOrSell = (buy_or_sell(gen) ? "BUY" : "SELL");
+    
+    //EQUITY_SYMBOL := string("E_") + equities(gen)
     op->equitySymbol = std::string("E_") + equities(gen);
+    //PRICE := 5 * price(gen) // $10 ­ $55
     op->price = 5 * price(gen); //10-55
+    //QUANTITY := quantity(gen) // 1 ­ 30
     op->quantity = quantity(gen); //1-30
     op->position = orderLinePR::pos++;
     return op;

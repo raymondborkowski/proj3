@@ -14,8 +14,8 @@ orderLine * orderLineRead(int x){
     
     std::string temp, temp1, temp2, temp3;
     char tempChar1, tempChar2;
-    int intTemp1, intTemp2,intTemp3, intTemp4;
-  //  std::cin>>temp;
+    int intTemp1,intTemp3, intTemp4;
+    //  std::cin>>emp;
     intTemp1 = x;
     std::cin>>temp1;
     std::cin>>temp2;
@@ -23,7 +23,6 @@ orderLine * orderLineRead(int x){
     std::cin>>tempChar1;
     if(tempChar1 != '$')
         exit(1);
-    intTemp2 = 1;
     std::cin>>temp;
     intTemp3 = stoi(temp);
     std::cin>>tempChar2;
@@ -33,12 +32,12 @@ orderLine * orderLineRead(int x){
     intTemp4 = stoi(temp);
     errorCheck(intTemp1, tempChar1, intTemp3, tempChar2, intTemp4, temp2, temp1, temp3);
     
-     orderOp.timestamp = intTemp1;
-     orderOp.client_name = temp1;
-     orderOp.buyOrSell = temp2;
-     orderOp.equitySymbol = temp3;
-     orderOp.price = intTemp3;
-     orderOp.quantity = intTemp4;
+    orderOp.timestamp = intTemp1;
+    orderOp.client_name = temp1;
+    orderOp.buyOrSell = temp2;
+    orderOp.equitySymbol = temp3;
+    orderOp.price = intTemp3;
+    orderOp.quantity = intTemp4;
     
     orderLine * pp = new orderLine;
     *pp = orderOp;
@@ -53,7 +52,7 @@ orderLinePR orderLineReadPR(int& x){
     std::cin>>inputPr;
     std::cin>>inputPr;
     orderOp.random_seed = stoi(inputPr);
-
+    
     std::cin>>inputPr;
     std::cin>>inputPr;
     orderOp.numOfOrders = stoi(inputPr);

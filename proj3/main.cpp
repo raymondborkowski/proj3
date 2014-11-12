@@ -1,4 +1,4 @@
-  //
+//
 //  main.cpp
 //  proj3
 //
@@ -23,7 +23,7 @@ int main(int argc, char ** argv) {
     orderLine* newOrder = nullptr;
     orderLinePR pp;
     int countOrders = 1;
-    int count = 0;
+    unsigned  int count = 0;
     bool test1 = op->mapType;
     //PR Read in
     if(test1 == true){
@@ -44,7 +44,7 @@ int main(int argc, char ** argv) {
             op->runThru(test1);
         }
     }
-
+    
     //TL Read in
     int x;
     while(cin>>x){
@@ -68,7 +68,7 @@ int main(int argc, char ** argv) {
     if(op->median == true)
         op->printMedian(count);
     
-    cout<<"--End of Day--\n";
+    cout<<"---End of Day---\n";
     
     if(op->summary == true){
         cout<<"Commission Earnings: $"<<op->getcomis()<<"\n";
@@ -78,11 +78,11 @@ int main(int argc, char ** argv) {
     }
     if(op->transfer){
         for(auto it = op->transferS.begin(); it != op->transferS.end(); ++it){
-            flagOptions clientt = op->transferM[*it];
+            med clientt = op->transferM[*it];
             cout << *it << " bought " << clientt.transferBuy<< " and sold " << clientt.transferSell  << " for a net transfer of $" << clientt.transferTotal << "\n";
         }
     }
-
+    
     
     return 0;
 }

@@ -10,7 +10,7 @@
 
 void flagOptions::printMedian(int x){
     for(auto it = medianSet.begin(); it != medianSet.end(); ++it) {
-        cout<<"Median match price of " << *it << " at time "<< x << " is $" << medianMap[*it].getMedian()<< '\n';
+        cout<<"Median match price of " << *it << " at time "<< x << " is $" << medianMap[*it].getMedian()<<'\n';
     }
 }
 void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, int> xx){
@@ -18,7 +18,7 @@ void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, in
         cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"/"<<"share\n";
 }
 //I need to set max and min prio queues
-void flagOptions::getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue){
+void med::getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue){
     switch(span){
             // Return median Type
         case 1:
@@ -35,7 +35,7 @@ void flagOptions::getMedians(priority_queue<int> maxQueue, priority_queue<int, v
     
 }
 //Recheck this before submit
-void flagOptions::insertMedian(int i){
+void med::insertMedian(int i){
     int zero = 0;
     int one = 1;
     int negativeOne = -1;
@@ -114,7 +114,7 @@ void flagOptions::insertDistribution(orderLine* newOrder){
 }
 
 void flagOptions::transferFunc(orderLine* newOrder){
-    flagOptions order = *new flagOptions;
+    med order = *new med;
     bool test = transfers;
     while(test == true){
         if(transferM.count(newOrder->client_name))
@@ -127,13 +127,13 @@ void flagOptions::transferFunc(orderLine* newOrder){
     }
 }
 
-void flagOptions::bought(int i, int j) {
+void med::bought(int i, int j) {
     //j = i + j;
     int temp = i*j;
     transferBuy = i + transferBuy;
     transferTotal = transferTotal - temp;
 }
-void  flagOptions::sell(int i, int j) {
+void  med::sell(int i, int j) {
     transferSell = i + transferSell;
     int temp = i * j;
     transferTotal = temp + transferTotal;
@@ -147,10 +147,10 @@ void flagOptions::runThru(bool x){
             if(median)
                 medianSet.insert(it.first);
         }
-      //  if(INSIDERS.count(it.first)) {
-      //      insider_trading('S', it);
-       //     insider_trading('B', it);
-      //  }
+        //  if(INSIDERS.count(it.first)) {
+        //      insider_trading('S', it);
+        //     insider_trading('B', it);
+        //  }
     }
 }
 
@@ -178,11 +178,11 @@ void flagOptions::addSummary(){
 
 
 int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
-
+    
     int returnValue = 0;
     bool trueOrFalse = true;
     orderLine* buyer;
-    int zero = 0;
+    unsigned  int zero = 0;
     orderLine* seller;
     if(op.second->empty() == true || op.first.empty() == true){
         return returnValue;
@@ -233,8 +233,9 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
                     op.second->slimit = cost;
                 }
             }
+            int zeroo = 0;
             trueOrFalse = true;
-            if(xx.first > zero){
+            if(xx.first > zeroo){
                 returnValue = 1;
                 //Add Transfers
                 //Add Summary
@@ -242,13 +243,9 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
                 medianMap[op.first].insertMedian(xx.second);
             }
         }
-
+        
         else
             trueOrFalse = false;
     }
     return returnValue;
 }
-
-
-
-
