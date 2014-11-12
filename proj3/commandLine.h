@@ -52,7 +52,13 @@ struct equityT{
 typedef vector<orderLine* > Orders;
 typedef priority_queue<orderLine*, Orders, compare> orderQueue;
 struct flagOptions{
-
+    int transferBuy;
+    int transferSell;
+    int transferTotal;
+    void bought(int, int);
+    void sell(int, int);
+    
+    
     int median1=0;
     int span=0;
     int getMedian(){return median1;}
@@ -64,7 +70,20 @@ struct flagOptions{
     string last;
     pair<string, string> pp;
     pair<int, int> xx;
-
+    
+    
+    int commision;
+    int getcomis(){return commision;}
+    int transfer;
+    int gettrans(){return transfer;}
+    int completed;
+    int getCompleted(){return completed;}
+    int shares;
+    int getShares(){return shares;}
+    void addSummary();
+    void addTransfer();
+    unordered_map<string, flagOptions> transferM;
+    set<string> transferS;
     
     priority_queue<int> maxQueue;
     priority_queue<int, vector<int>, greater<int>> minQueue;
@@ -76,7 +95,7 @@ struct flagOptions{
     set< string > medianSet;
     bool transfers = false;
     void printMedian(int x);
-   
+    void transferFunc(orderLine* newOrder);
     bool insiders = false;
     bool ttt = false;
     void insert(orderLine);

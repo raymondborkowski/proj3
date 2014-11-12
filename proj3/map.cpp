@@ -17,10 +17,6 @@ void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, in
     if(verbose==true)
         cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"/"<<"share\n";
 }
-void insertTransfer(){
-    
-    
-}
 //I need to set max and min prio queues
 void flagOptions::getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue){
     switch(span){
@@ -114,7 +110,35 @@ void flagOptions::insertDistribution(orderLine* newOrder){
         eqMap.insert(make_pair(newOrder->equitySymbol, temp));
         medianMap[newOrder->equitySymbol];
     }
+    transferFunc(newOrder);
 }
+
+void flagOptions::transferFunc(orderLine* newOrder){
+    flagOptions order = *new flagOptions;
+    bool test = transfers;
+    while(test == true){
+        if(transferM.count(newOrder->client_name))
+            return;
+        else{
+            transferM.insert(make_pair(newOrder->client_name, order));
+            transferS.insert(newOrder->client_name);
+            return;
+        }
+    }
+}
+
+void flagOptions::bought(int i, int j) {
+    //j = i + j;
+    int temp = i*j;
+    transferBuy = i + transferBuy;
+    transferTotal = transferTotal - temp;
+}
+void  flagOptions::sell(int i, int j) {
+    transferSell = i + transferSell;
+    int temp = i * j;
+    transferTotal = temp + transferTotal;
+}
+
 void flagOptions::runThru(bool x){
     int zero = 0;
     for(auto it : eqMap) {
@@ -129,6 +153,29 @@ void flagOptions::runThru(bool x){
       //  }
     }
 }
+
+void flagOptions::addSummary(){
+    bool test = summary;
+    bool testT = transfers;
+    int one = xx.first;
+    int two = xx.second;
+    
+    while(testT == true){
+        transferM[pp.first].bought(one, two);
+        transferM[pp.second].sell(one, two);
+        testT = false;
+    }
+    
+    while(test){
+        shares = one + shares;
+        completed+=1;
+        transfer = (one*two) + transfer;
+        for(int i = 0; i < 2; i++)
+            commision = ((one*two) / 100 )+ commision;
+        test = false;
+    }
+}
+
 
 int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
 
@@ -191,6 +238,7 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
                 returnValue = 1;
                 //Add Transfers
                 //Add Summary
+                addSummary();
                 medianMap[op.first].insertMedian(xx.second);
             }
         }

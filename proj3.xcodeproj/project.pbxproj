@@ -32,6 +32,7 @@
 		344D81B51A0AE06D00D6767A /* pseduRando.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pseduRando.cpp; sourceTree = "<group>"; };
 		344D81B81A1037EB00D6767A /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
 		344D81B91A1037EB00D6767A /* map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
+		344D81E41A12D66A00D6767A /* TLBinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TLBinput.txt; sourceTree = "<group>"; };
 		347F278A1A008615003C9EE0 /* proj3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = proj3; sourceTree = BUILT_PRODUCTS_DIR; };
 		347F278D1A008615003C9EE0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		347F27941A0086D3003C9EE0 /* commandLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandLine.cpp; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 				3494D5FE1A09EE9200699658 /* orderLine.h */,
 				344D81B51A0AE06D00D6767A /* pseduRando.cpp */,
 				347F27971A009E88003C9EE0 /* Makefile */,
+				344D81E41A12D66A00D6767A /* TLBinput.txt */,
 				3494D6001A0AD83100699658 /* PRinput.txt */,
 				347F27991A009EE5003C9EE0 /* TLinput.txt */,
 			);
