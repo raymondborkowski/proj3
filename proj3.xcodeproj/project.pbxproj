@@ -33,7 +33,6 @@
 		344D81B81A1037EB00D6767A /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
 		344D81B91A1037EB00D6767A /* map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
 		344D81E41A12D66A00D6767A /* TLBinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TLBinput.txt; sourceTree = "<group>"; };
-		345397EF1A13F77500B68B90 /* test­-1-­g-A.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test­-1-­g-A.txt"; sourceTree = "<group>"; };
 		345397F01A13F87200B68B90 /* test-2-v.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-2-v.txt"; sourceTree = "<group>"; };
 		347F278A1A008615003C9EE0 /* proj3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = proj3; sourceTree = BUILT_PRODUCTS_DIR; };
 		347F278D1A008615003C9EE0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -48,6 +47,9 @@
 		3494D6001A0AD83100699658 /* PRinput.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PRinput.txt; sourceTree = "<group>"; };
 		34A224AA1A142D2600535A56 /* test-3-g-E_A.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-3-g-E_A.txt"; sourceTree = "<group>"; };
 		34A224AB1A1432D500535A56 /* pg13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pg13.txt; sourceTree = "<group>"; };
+		34ED77851A155F53000DE2F8 /* test-1-i-E.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-1-i-E.txt"; sourceTree = "<group>"; };
+		34ED77861A155FF3000DE2F8 /* test-9-g-DD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-9-g-DD.txt"; sourceTree = "<group>"; };
+		34ED77871A15621D000DE2F8 /* test-10-g-CC.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-10-g-CC.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +92,11 @@
 				3494D5FD1A09EE9200699658 /* orderLine.cpp */,
 				3494D5FE1A09EE9200699658 /* orderLine.h */,
 				344D81B51A0AE06D00D6767A /* pseduRando.cpp */,
-				345397EF1A13F77500B68B90 /* test­-1-­g-A.txt */,
 				345397F01A13F87200B68B90 /* test-2-v.txt */,
 				34A224AA1A142D2600535A56 /* test-3-g-E_A.txt */,
+				34ED77851A155F53000DE2F8 /* test-1-i-E.txt */,
+				34ED77861A155FF3000DE2F8 /* test-9-g-DD.txt */,
+				34ED77871A15621D000DE2F8 /* test-10-g-CC.txt */,
 				34A224AB1A1432D500535A56 /* pg13.txt */,
 				347F27971A009E88003C9EE0 /* Makefile */,
 				344D81E41A12D66A00D6767A /* TLBinput.txt */,

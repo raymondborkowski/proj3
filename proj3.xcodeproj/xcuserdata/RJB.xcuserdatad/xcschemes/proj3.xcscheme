@@ -59,12 +59,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-m"
+            argument = "--verbose --insider E_A --transfers E_A"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-m -s -t -v"
-            isEnabled = "NO">
+            argument = "-i E_A -t"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-t"
@@ -80,7 +80,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--verbose -s --median --transfers --insider AMD -i GE --ttt AMZN"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-s"
@@ -99,7 +99,7 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "TLinput.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"
@@ -109,7 +109,7 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "inside.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"
