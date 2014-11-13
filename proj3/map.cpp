@@ -164,7 +164,7 @@ void flagOptions::timeTravFunc(orderLine* newOrder){
                     tttM[newOrder->equitySymbol].timeSellBuy(newOrder->timestamp,price, true);
             }
         }
-         if(tttM.count(newOrder->equitySymbol)){
+        if(tttM.count(newOrder->equitySymbol)){
             if(buy){
                 int x = price - tBuy;
                 if(tBTime > tSTime)
@@ -178,17 +178,19 @@ void flagOptions::timeTravFunc(orderLine* newOrder){
 }
 
 void flagOptions::transferFunc(orderLine* newOrder){
-    med order = *new med;
+    med* order = new med;
     bool test = transfers;
     while(test == true){
         if(transferM.count(newOrder->client_name))
-            return;
+            goto here;
         else{
-            transferM.insert(make_pair(newOrder->client_name, order));
+            transferM.insert(make_pair(newOrder->client_name, *order));
             transferS.insert(newOrder->client_name);
-            return;
+            goto here;
         }
     }
+here:
+    delete order;
 }
 
 void med::bought(int i, int j) {
@@ -233,22 +235,22 @@ void flagOptions::inside(pair<string, equityT*> op, bool type){
     
     //if true buy if false sell
     
-        if(type){
-            if(op.second->buy.empty() == true)
-                return;
-        }
-        else{
-            if(op.second->sell.empty() == true)
-                return;
-        }
-        int ecirp;
-        int total;
-        string print = "INSIDER_";
-        print = print + op.first;
-        orderLine* t;
-        string ice;
-        int count;
-        int medd = medianMap[op.first].medd();
+    if(type){
+        if(op.second->buy.empty() == true)
+            return;
+    }
+    else{
+        if(op.second->sell.empty() == true)
+            return;
+    }
+    int ecirp;
+    int total;
+    string print = "INSIDER_";
+    print = print + op.first;
+    orderLine* t = nullptr;
+    string ice;
+    int count;
+    int medd = medianMap[op.first].medd();
     if(medd){
         if(type){
             ecirp = op.second->blimit;
@@ -290,6 +292,7 @@ void flagOptions::inside(pair<string, equityT*> op, bool type){
             
         }
     }
+    delete t;
 }
 void flagOptions::completeVerb(bool buySell, bool verb, int count, string ice, string print, int ecirp, pair<string, equityT*> op){
     while(verb){
@@ -320,7 +323,7 @@ void flagOptions::completeTravel(int x1, bool buySell, bool travel, pair<string,
                 int x = x1 - tttM[op.first].tttsellp;
                 if(x > tttM[op.first].tttp)
                     tttM[op.first].timeSellBuy(time, x1, false);
-                    
+                
             }
             return;
         }
@@ -336,12 +339,8 @@ void flagOptions::completeSummary(int count, int other, bool summ){
         shares += count;
         completed = addOne(completed);
         transfer = addTwo(transfer, mult);
-        for(int i = 0; i <2; ++i){
-            if(i == 0)
-                commision = divide(addTwo(commision, mult));
-            else
-                commision = divide(addTwo(commision, mult));
-        }
+        for(int i = 0; i < 2; i++)
+            commision = ((count*other) / 100 )+ commision;
         return;
     }
 }
@@ -367,7 +366,7 @@ void flagOptions::completeTransfer(int i, int j, bool transfer, bool buySell, st
         transferS.insert(ice);
         break;
     }
-
+    delete tran;
 }
 
 void flagOptions::runThru(bool x){
@@ -491,6 +490,5 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
     }
     return returnValue;
 }
-
 
 

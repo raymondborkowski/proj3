@@ -16,7 +16,7 @@ flagOptions getopt(int argc, char ** argv){
         {"verbose", no_argument, NULL, 'v'},
         {"median", no_argument, NULL, 'm'},
         {"transfers", no_argument, NULL, 't'},
-        {"insiders", required_argument, NULL, 'i'},
+        {"insider", required_argument, NULL, 'i'},
         {"ttt", required_argument, NULL, 'g'},
         {"help", no_argument, NULL, 'h'}
     };
@@ -43,10 +43,11 @@ flagOptions getopt(int argc, char ** argv){
                 if(op.transfers == true) {
                     if(!op.transferM.count(optarg)) {
                         string temp = optarg;
-                        med temp1 = *new med;
+                        med* temp1 = new med;
                         temp = "INSIDER_" + temp;
-                        op.transferM.insert(make_pair(temp, temp1));
+                        op.transferM.insert(make_pair(temp, *temp1));
                         op.transferS.insert(temp);
+                        delete temp1;
                     }
                 }
             }
@@ -60,6 +61,7 @@ flagOptions getopt(int argc, char ** argv){
                     op.tttM.insert(make_pair(temp, *one));
                     op.tttS.push_back(temp);
                     timeTrav = false;
+                    delete one;
                     continue;
                 }
                 break;
@@ -92,7 +94,7 @@ bool compare::comp(orderLine* i, orderLine* j) const {
     
     while(true){
         if(b == a){
-            if(reverse){
+            if(turn){
                 if(d > c)
                     return true;
                 return false;
@@ -110,7 +112,7 @@ bool compare::comp(orderLine* i, orderLine* j) const {
 }
 
 bool compare::operator()(orderLine* i, orderLine* j) const {
-    if(!reverse){
+    if(!turn){
         unsigned int a = i->price;
         unsigned int b = j->price;
         unsigned int c = i->position;
@@ -118,7 +120,7 @@ bool compare::operator()(orderLine* i, orderLine* j) const {
         
         while(true){
             if(b == a){
-                if(reverse){
+                if(turn){
                     if(d > c)
                         return true;
                     return false;
@@ -142,7 +144,7 @@ bool compare::operator()(orderLine* i, orderLine* j) const {
         
         while(true){
             if(b == a){
-                if(reverse){
+                if(turn){
                     if(d > c)
                         return true;
                     return false;

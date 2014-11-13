@@ -79,7 +79,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-v -i E_A -g E_A"
+            argument = "--verbose -s --median --transfers --insider AMD -i GE --ttt AMZN"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -109,12 +109,12 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "inside.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"
             value = "medium-TL-in.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "MYARQ"

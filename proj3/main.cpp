@@ -16,8 +16,8 @@
 int main(int argc, char ** argv) {
     
     ios_base::sync_with_stdio(false);
-  //  ifstream arq(getenv("MYARQ"));
-  //  cin.rdbuf(arq.rdbuf());
+      ifstream arq(getenv("MYARQ"));
+      cin.rdbuf(arq.rdbuf());
     flagOptions* op = new flagOptions;
     *op = getopt(argc, argv);
     orderLine* newOrder = nullptr;
@@ -98,6 +98,6 @@ int main(int argc, char ** argv) {
             cout<<" at time: "<<client.tttbuyt<<" and sell it at time: "<<client.tttsellt<<"\n";
         }
     }
-    
+    delete op;
     return 0;
 }

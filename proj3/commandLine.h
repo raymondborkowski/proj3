@@ -59,9 +59,9 @@ struct med {
 };
 
 struct compare{
-    bool reverse;
-    compare(const bool& rev=false) {
-        reverse = rev;
+    bool turn;
+    compare(bool turn1= false) {
+        turn = turn1;
     }
     bool comp(orderLine*, orderLine*) const;
     bool operator()(orderLine*, orderLine*) const;
@@ -78,7 +78,6 @@ struct equityT{
     sell(compare(true)), blimit(-1), slimit(INT_MAX) {}
     bool empty() {return (buy.empty() || sell.empty());}
     void insertEq(orderLine*);
-    
 };
 
 typedef vector<orderLine* > Orders;
@@ -117,10 +116,6 @@ struct flagOptions{
     set<string> transferS;
     set<string> medianSet;
     unordered_set<string> insider;
-    //  priority_queue<int> maxQueue;
-    //  priority_queue<int, vector<int>, greater<int>> minQueue;
-    
-    
     void addSummary();
     void addTransfer();
     void addTTT(char*);
