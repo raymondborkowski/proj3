@@ -13,6 +13,11 @@
 #include "errorChecking.h"
 #include <random>
 using namespace std;
+struct timeSTER{
+    int timeSTER = 0;
+    
+    void checkTimerSTER(int x);
+};
 
 struct orderLine{
     std::string client_name;
@@ -59,7 +64,7 @@ struct orderLinePR{
     
 };
 
-orderLine * orderLineRead(int);
+orderLine * orderLineRead(int, int);
 orderLinePR orderLineReadPR(int& );
 
 #endif /* defined(__proj3__readInLines__) */

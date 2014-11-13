@@ -7,12 +7,6 @@
 //
 
 #include "map.h"
-
-void flagOptions::printMedian(int x){
-    for(auto it = medianSet.begin(); it != medianSet.end(); ++it) {
-        cout<<"Median match price of " << *it << " at time "<< x << " is $" << medianMap[*it].getMedian()<<'\n';
-    }
-}
 bool med::check(){
     int i = -1;
     int j = 0;
@@ -113,6 +107,10 @@ void med::insertMedian(int i){
     }
     getMedians(maxQueue, minQueue);
 }
+int addOne(int x){
+    x +=1;
+    return x;
+}
 void equityT::insertEq(orderLine* newOrder){
     int price = newOrder->price;
     if(newOrder->buyOrSell == "BUY") {
@@ -132,6 +130,7 @@ bool isEmpty(pair<string, equityT*> op){
     return false;
 }
 void flagOptions::insertDistribution(orderLine* newOrder){
+    
     if(eqMap.count(newOrder->equitySymbol))
         eqMap[newOrder->equitySymbol]->insertEq(newOrder);
     else{
@@ -140,6 +139,7 @@ void flagOptions::insertDistribution(orderLine* newOrder){
         eqMap.insert(make_pair(newOrder->equitySymbol, temp));
         medianMap[newOrder->equitySymbol];
     }
+    time = newOrder->timestamp;
     transferFunc(newOrder);
     timeTravFunc(newOrder);
 }
@@ -193,6 +193,7 @@ void flagOptions::transferFunc(orderLine* newOrder){
 
 void med::bought(int i, int j) {
     //j = i + j;
+    
     int temp = i*j;
     transferBuy = i + transferBuy;
     transferTotal = transferTotal - temp;
@@ -203,18 +204,198 @@ void  med::sell(int i, int j) {
     transferTotal = temp + transferTotal;
 }
 
+int easyCalc(int x, int y, bool test){
+    int val;
+    if(test)
+        val = x-y;
+    else
+        val = y - x;
+    return val;
+}
+
+int addTwo(int x1, int x2){
+    int p = x1+x2;
+    return p;
+}
+int divide(int x){
+    return (x/100);
+}
+
+
+bool comparee(int x, int y){
+    if(x > (y/10)){
+        return true;
+    }
+    return false;
+}
+
+void flagOptions::inside(pair<string, equityT*> op, bool type){
+    
+    //if true buy if false sell
+    
+        if(type){
+            if(op.second->buy.empty() == true)
+                return;
+        }
+        else{
+            if(op.second->sell.empty() == true)
+                return;
+        }
+        int ecirp;
+        int total;
+        string print = "INSIDER_";
+        print = print + op.first;
+        orderLine* t;
+        string ice;
+        int count;
+        int medd = medianMap[op.first].medd();
+    if(medd){
+        if(type){
+            ecirp = op.second->blimit;
+        }
+        else{
+            ecirp = op.second->slimit;
+        }
+        total = easyCalc(ecirp, medd, type);
+        
+        if(comparee(total, medd) == true){
+            if(type){
+                t = op.second->buy.top();
+                count = t->quantity;
+                ice = t->client_name;
+                op.second->buy.pop();
+                if(op.second->buy.empty() == true) {
+                    op.second->blimit = 0;
+                }
+                else
+                    op.second->blimit = op.second->buy.top()->price;
+            }
+            else{
+                t=op.second->sell.top();
+                count = t->quantity;
+                ice = t->client_name;
+                op.second->sell.pop();
+                if(op.second->sell.empty() == true) {
+                    op.second->slimit = 1316134912;
+                }
+                else
+                    op.second->slimit = op.second->sell.top()->price;
+            }
+            medianMap[op.first].insertMedian(ecirp);
+            
+            completeSummary(count, ecirp, summary);
+            completeTransfer(count, ecirp, transfers, type, print, ice);
+            completeTravel(ecirp, type, ttt, op);
+            completeVerb(type, verbose, count, ice, print, ecirp, op);
+            
+        }
+    }
+}
+void flagOptions::completeVerb(bool buySell, bool verb, int count, string ice, string print, int ecirp, pair<string, equityT*> op){
+    while(verb){
+        if(count > 0){
+            while(buySell){
+                cout<<ice<<" purchased "<<count<<" shares of "<<op.first<<" from "<<print<<" for $"<<ecirp<<"/share\n";
+                return;
+            }
+            cout<<print<<" purchased "<<count<<" shares of "<<op.first<<" from "<<ice<<" for $"<<ecirp<<"/share\n";
+            break;
+        }
+        break;
+    }
+}
+
+void flagOptions::completeTravel(int x1, bool buySell, bool travel, pair<string, equityT*> op){
+    //price x1
+    while(travel){
+        string temp;
+        while(tttM.count(op.first)){
+            if(buySell){
+                int x = tttM[op.first].tttbuyp - x1;
+                if(x > (tttM[op.first].tttp)){
+                    tttM[op.first].timeSellBuy(time, x1, true);
+                }
+            }
+            else if(!buySell){
+                int x = x1 - tttM[op.first].tttsellp;
+                if(x > tttM[op.first].tttp)
+                    tttM[op.first].timeSellBuy(time, x1, false);
+                    
+            }
+            return;
+        }
+        return;
+    }
+    return;
+    
+    
+}
+void flagOptions::completeSummary(int count, int other, bool summ){
+    int mult = count * other;
+    while(summ){
+        shares += count;
+        completed = addOne(completed);
+        transfer = addTwo(transfer, mult);
+        for(int i = 0; i <2; ++i){
+            if(i == 0)
+                commision = divide(addTwo(commision, mult));
+            else
+                commision = divide(addTwo(commision, mult));
+        }
+        return;
+    }
+}
+void flagOptions::completeTransfer(int i, int j, bool transfer, bool buySell, string go, string ice){
+    med* tran = new med;
+    transferS.insert(go);
+    bool test = buySell;
+    
+    while(transfer){
+        while(test){
+            transferM[go].sell(i, j);
+            transferM[ice].bought(i, j);
+            goto here;
+        }
+    here:
+        if(!test){
+            transferM[go].bought(i, j);
+            transferM[ice].sell(i,j);
+        }
+        if(transferM.count(go) == false){
+            transferM.insert(make_pair(go, *tran));
+        }
+        transferS.insert(ice);
+        break;
+    }
+
+}
+
 void flagOptions::runThru(bool x){
     int zero = 0;
-    for(auto it : eqMap) {
-        if(completeTrade(it, x) != zero) {
-            last = it.first;
-            if(median)
-                medianSet.insert(it.first);
+    int bop = true;
+    for(auto it = eqMap.begin(); it != eqMap.end(); it++){
+        while(bop){
+            if(completeTrade(*it, x) != zero) {
+                last = it->first;
+                if(median)
+                    medianSet.insert(it->first);
+            }
+            bop = false;
         }
-        //  if(INSIDERS.count(it.first)) {
-        //      insider_trading('S', it);
-        //     insider_trading('B', it);
-        //  }
+        while(!bop){
+            if(insider.count(it->first)) {
+                bool temp = false;
+                for(int i = 0; i < 2; ++i){
+                    if(i == 0)
+                        temp = true;
+                    else
+                        temp = false;
+                    inside(*it, temp);
+                }
+                
+            }
+            bop = true;
+        }
     }
 }
 
@@ -223,10 +404,11 @@ void flagOptions::addSummary(){
     bool testT = transfers;
     int one = xx.first;
     int two = xx.second;
-    
     while(testT == true){
+        
         transferM[pp.first].bought(one, two);
         transferM[pp.second].sell(one, two);
+        
         testT = false;
     }
     
@@ -275,8 +457,6 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
             buyer->quantity = (buyer->quantity - xx.first);
             printVerbose(buyer, seller,xx);
             if(buyer->quantity == zero) {
-                orderLine* temp = op.second->buy.top();
-                delete temp;
                 op.second->buy.pop();
                 if(op.second->buy.empty()) {
                     op.second->blimit = zero;
@@ -287,8 +467,6 @@ int flagOptions::completeTrade(pair<string, equityT*> op, bool x){
                 }
             }
             else if(seller->quantity == zero) {
-                orderLine* temp = op.second->sell.top();
-                delete temp;
                 op.second->sell.pop();
                 if(op.second->sell.empty())
                     op.second->slimit = INT_MAX;

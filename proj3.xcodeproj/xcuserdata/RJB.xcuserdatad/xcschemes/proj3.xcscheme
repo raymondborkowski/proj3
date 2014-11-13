@@ -59,15 +59,39 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-s"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-q --output M &lt; /Users/RJB/Documents/classes/eecs281/project1/project1/test.txt"
+            argument = "-m"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;"
+            argument = "-m -s -t -v"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-t"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-v -i E_A"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-v"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-v -i E_A -g E_A"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-s"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-i E_A"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-g E_A&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt&#13; &lt; infile.txt &gt; outfile.txt &lt; infile.txt &gt; outfile.txt&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;&#xad;&#xad;transfers &#xad;s &#xad;&#xad;verbose &#xad;&#xad;ttt GOOG &#xad;&#xad;ttt IBM &#xad;&#xad;insider GOOG&#13;"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -75,6 +99,16 @@
          <EnvironmentVariable
             key = "MYARQ"
             value = "TLinput.txt"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "MYARQ"
+            value = "pg13.txt"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "MYARQ"
+            value = "inside.txt"
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable

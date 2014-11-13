@@ -17,12 +17,12 @@ int main(int argc, char ** argv) {
     
     ios_base::sync_with_stdio(false);
   //  ifstream arq(getenv("MYARQ"));
-   // cin.rdbuf(arq.rdbuf());
+  //  cin.rdbuf(arq.rdbuf());
     flagOptions* op = new flagOptions;
     *op = getopt(argc, argv);
     orderLine* newOrder = nullptr;
     orderLinePR pp;
-    
+    int y = 0;
     int countOrders = 1;
     unsigned  int count = 0;
     bool test1 = op->mapType;
@@ -34,7 +34,9 @@ int main(int argc, char ** argv) {
             newOrder = pp.order();
             if(count != newOrder->timestamp){
                 if(op->median == true){
-                    op->printMedian(count);
+                    for(auto it = op->medianSet.begin(); it != op->medianSet.end(); ++it) {
+                        cout<<"Median match price of " << *it << " at time "<< count << " is $" << op->medianMap[*it].medd()<<'\n';
+                    }
                     count = newOrder->timestamp;
                 }
                 
@@ -50,11 +52,14 @@ int main(int argc, char ** argv) {
     int x;
     while(cin>>x){
         if(test1 == false){
-            newOrder = orderLineRead(x);
+            newOrder = orderLineRead(x, y);
+            y= newOrder->timestamp;
         }
         if(count != newOrder->timestamp){
             if(op->median == true){
-                op->printMedian(count);
+                for(auto it = op->medianSet.begin(); it != op->medianSet.end(); ++it) {
+                    cout<<"Median match price of " << *it << " at time "<< count << " is $" << op->medianMap[*it].medd()<<'\n';
+                }
                 count = newOrder->timestamp;
             }
             
@@ -66,8 +71,11 @@ int main(int argc, char ** argv) {
         op->runThru(test1);
         
     }
-    if(op->median == true)
-        op->printMedian(count);
+    if(op->median == true){
+        for(auto it = op->medianSet.begin(); it != op->medianSet.end(); ++it) {
+            cout<<"Median match price of " << *it << " at time "<< count << " is $" << op->medianMap[*it].medd()<<'\n';
+        }
+    }
     
     cout<<"---End of Day---\n";
     
@@ -85,7 +93,9 @@ int main(int argc, char ** argv) {
         for(auto it = op->tttS.begin(); it !=op->tttS.end(); ++it){
             med client = op->tttM[*it];
             client.check();
-            cout<<"Time travelers would buy "<<*it<<" at time: "<<client.tttbuyt<<" and sell it at time: "<<client.tttsellt<<"\n";
+            cout<<"Time travelers would buy ";
+            cout<<*it;
+            cout<<" at time: "<<client.tttbuyt<<" and sell it at time: "<<client.tttsellt<<"\n";
         }
     }
     

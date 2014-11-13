@@ -27,7 +27,6 @@ struct whileStuff{
     bool trueOrFalse;
     int returnValue;
 };
-
 struct med {
     priority_queue<int> maxQueue;
     priority_queue<int, vector<int>, greater<int>> minQueue;
@@ -44,16 +43,16 @@ struct med {
     
     int median1=0;
     int span=0;
-    int transferBuy;
-    int transferSell;
-    int transferTotal;
+    int transferBuy = 0;
+    int transferSell = 0;
+    int transferTotal = 0;
     
     void bought(int, int);
     void sell(int, int);
     void getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue);
     void insertMedian(int i);
     
-    int getMedian(){return median1;}
+    int medd(){return median1;}
     
     med() : median1(0), span(0) {}
     
@@ -92,20 +91,24 @@ struct flagOptions{
     bool insiders = false;
     bool ttt = false;
     bool mapType = false;
+    int time;
     unordered_map<string, med> transferM;
     unordered_map<string, med> tttM;
     unordered_map<string, med> medianMap;
     unordered_map< string, equityT* > eqMap;
-    
-    int commision;
+    void inside(pair<string, equityT*> equity, bool);
+    int commision = 0;
     int getcomis(){return commision;}
-    int transfer;
+    int transfer = 0;
     int gettrans(){return transfer;}
-    int completed;
+    int completed = 0;
     int getCompleted(){return completed;}
-    int shares;
+    int shares = 0;
     int getShares(){return shares;}
-    
+    void completeSummary(int, int, bool);
+    void completeTransfer(int, int, bool, bool, string, string);
+    void completeTravel(int x1, bool buySell, bool travel, pair<string, equityT*> op);
+    void completeVerb(bool, bool verb, int count, string ice,string, int ecirp, pair<string, equityT*> op);
     int completeTrade(pair<string, equityT*> op, bool);
     string last;
     pair<string, string> pp;
@@ -123,7 +126,6 @@ struct flagOptions{
     void addTTT(char*);
     void printVerbose(orderLine* buyer, orderLine*, pair<int, int>);
     void runThru(bool);
-    void printMedian(int x);
     void transferFunc(orderLine* newOrder);
     void timeTravFunc(orderLine* newOrder);
     void insert(orderLine);

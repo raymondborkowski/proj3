@@ -9,7 +9,13 @@
 #include "orderLine.h"
 #include <string>
 
-orderLine * orderLineRead(int x){
+void timeSTER::checkTimerSTER(int x){
+    if(x < timeSTER)
+        exit(1);
+    return;
+}
+
+orderLine * orderLineRead(int x, int y){
     orderLine orderOp;
     static int pos= 0;
     std::string temp, temp1, temp2, temp3;
@@ -31,6 +37,9 @@ orderLine * orderLineRead(int x){
     std::cin>>temp;
     intTemp4 = stoi(temp);
     errorCheck(intTemp1, tempChar1, intTemp3, tempChar2, intTemp4, temp2, temp1, temp3);
+    
+    if(y > intTemp1)
+        exit(1);
     
     orderOp.timestamp = intTemp1;
     orderOp.client_name = temp1;
