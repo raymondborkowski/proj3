@@ -14,7 +14,9 @@
 #include <random>
 #include "map.h"
 #include <map>
+#include <deque>
 #include <unordered_map>
+#include <unordered_set>
 #include "orderLine.h"
 #include <queue>
 #include<set>
@@ -29,6 +31,17 @@ struct whileStuff{
 struct med {
     priority_queue<int> maxQueue;
     priority_queue<int, vector<int>, greater<int>> minQueue;
+    
+    int tttbuyt = -1;
+    int tttbuyp = 0;
+    int tttsellt = -1;
+    int tttsellp = 0;
+    int tttp  = INT_MIN;
+    
+    void timeSellBuy(int,int,bool);
+    void printT(string);
+    bool check();
+    
     int median1=0;
     int span=0;
     int transferBuy;
@@ -80,6 +93,7 @@ struct flagOptions{
     bool ttt = false;
     bool mapType = false;
     unordered_map<string, med> transferM;
+    unordered_map<string, med> tttM;
     unordered_map<string, med> medianMap;
     unordered_map< string, equityT* > eqMap;
     
@@ -96,21 +110,22 @@ struct flagOptions{
     string last;
     pair<string, string> pp;
     pair<int, int> xx;
-    
+    deque<string> tttS;
     set<string> transferS;
-    set< string > medianSet;
-    set<string> insider;
+    set<string> medianSet;
+    unordered_set<string> insider;
     //  priority_queue<int> maxQueue;
     //  priority_queue<int, vector<int>, greater<int>> minQueue;
     
     
     void addSummary();
     void addTransfer();
-    
+    void addTTT(char*);
     void printVerbose(orderLine* buyer, orderLine*, pair<int, int>);
     void runThru(bool);
     void printMedian(int x);
     void transferFunc(orderLine* newOrder);
+    void timeTravFunc(orderLine* newOrder);
     void insert(orderLine);
     void insertDistribution(orderLine* newOrder);
     

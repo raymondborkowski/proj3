@@ -1,0 +1,18 @@
+TL
+0 PlanetExpress SELL AMD $1 #101
+0 BadWolfCorp BUY GE $28 #27
+0 BluthCorp BUY AMD $28 #27
+0 KrustyKrab BUY AMD $30 #11
+0 PlanetExpress SELL GE $30 #21
+0 PlanetExpress BUY NFLX $28 #6
+1 BluthCorp SELL AMZN $31 #6
+2 BadWolfCorp SELL GE $28 #6
+3 BadWolfCorp SELL AMZN $1 #9
+4 KrustyKrab BUY AMZN $130 #7
+4 BadWolfCorp BUY AMZN $50 #27
+5 BadWolfCorp SELL AMZN $50 #7
+5 BluthCorp BUY AMD $150 #6
+6 PlanetExpress SELL AMD $80 #17
+6 BadWolfCorp BUY AMD $120 #7
+6 KrustyKrab BUY GE $110 #27
+6 BluthCorp BUY GE $200 #1

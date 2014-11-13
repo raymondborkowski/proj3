@@ -7,6 +7,7 @@
 //
 
 #include "commandLine.h"
+#include <deque>
 
 flagOptions getopt(int argc, char ** argv){
     
@@ -36,12 +37,33 @@ flagOptions getopt(int argc, char ** argv){
             case 't':
                 op.transfers=true;
                 break;
-            case 'i':
+            case 'i':{
                 op.insiders = true;
+                op.insider.insert(optarg);
+                if(op.transfers == true) {
+                    if(!op.transferM.count(optarg)) {
+                        string temp = optarg;
+                        med temp1 = *new med;
+                        temp = "INSIDER_" + temp;
+                        op.transferM.insert(make_pair(temp, temp1));
+                        op.transferS.insert(temp);
+                    }
+                }
+            }
                 break;
-            case 'g':
+            case 'g':{
                 op.ttt = true;
+                bool timeTrav = op.ttt;
+                while(timeTrav == true){
+                    string temp(optarg);
+                    med* one = new med;
+                    op.tttM.insert(make_pair(temp, *one));
+                    op.tttS.push_back(temp);
+                    timeTrav = false;
+                    continue;
+                }
                 break;
+            }
             case 'h':
                 cout<<"This is a Stock Market Simulation\n"
                 "--s -summary prints that\n"

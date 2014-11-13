@@ -13,6 +13,15 @@ void flagOptions::printMedian(int x){
         cout<<"Median match price of " << *it << " at time "<< x << " is $" << medianMap[*it].getMedian()<<'\n';
     }
 }
+bool med::check(){
+    int i = -1;
+    int j = 0;
+    if(tttsellt < j){
+        tttbuyt = i;
+        return true;
+    }
+    return false;
+}
 void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, int> xx){
     if(verbose==true){
         if(xx.first == 0)
@@ -20,6 +29,24 @@ void flagOptions::printVerbose(orderLine* buyer, orderLine* seller, pair<int, in
         cout<<buyer->client_name<<" purchased "<<xx.first<<" shares of "<<buyer->equitySymbol<<" from "<<seller->client_name<<" for $"<<xx.second<<"/"<<"share\n";
     }
 }
+
+void med::timeSellBuy(int i, int j, bool buyOrSell){
+    if(buyOrSell == true){
+        tttbuyt = i;
+        tttbuyp = j;
+        int total = tttsellp - tttbuyp;
+        tttp = total;
+        
+        return;
+    }
+    else if(buyOrSell == false && !(tttbuyt < 0)){
+        tttsellp = j;
+        tttsellt = i;
+        int total = tttsellp - tttbuyp;
+        tttp = total;
+    }
+}
+
 //I need to set max and min prio queues
 void med::getMedians(priority_queue<int> maxQueue, priority_queue<int, vector<int>, greater<int>> minQueue){
     switch(span){
@@ -114,6 +141,40 @@ void flagOptions::insertDistribution(orderLine* newOrder){
         medianMap[newOrder->equitySymbol];
     }
     transferFunc(newOrder);
+    timeTravFunc(newOrder);
+}
+void flagOptions::timeTravFunc(orderLine* newOrder){
+    
+    bool timeTrave = ttt;
+    int price = newOrder->price;
+    int tSell = tttM[newOrder->equitySymbol].tttsellp;
+    int tBuy = tttM[newOrder->equitySymbol].tttbuyp;
+    int tBTime = tttM[newOrder->equitySymbol].tttbuyt;
+    int tSTime = tttM[newOrder->equitySymbol].tttsellt;
+    int total = tttM[newOrder->equitySymbol].tttp;
+    while(timeTrave){
+        string temp = newOrder->buyOrSell;
+        bool buy = false;
+        if(temp =="BUY")
+            buy = true;
+        if(tttM.count(newOrder->equitySymbol)){
+            if(!buy){
+                int x = tSell - price;
+                if(x > tttM[newOrder->equitySymbol].tttp)
+                    tttM[newOrder->equitySymbol].timeSellBuy(newOrder->timestamp,price, true);
+            }
+        }
+         if(tttM.count(newOrder->equitySymbol)){
+            if(buy){
+                int x = price - tBuy;
+                if(tBTime > tSTime)
+                    tttM[newOrder->equitySymbol].timeSellBuy(newOrder->timestamp,price, false);
+                if(x > total)
+                    tttM[newOrder->equitySymbol].timeSellBuy(newOrder->timestamp,price, false);
+            }
+        }
+        timeTrave = false;
+    }
 }
 
 void flagOptions::transferFunc(orderLine* newOrder){

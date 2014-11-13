@@ -16,8 +16,8 @@
 int main(int argc, char ** argv) {
     
     ios_base::sync_with_stdio(false);
-    ifstream arq(getenv("MYARQ"));
-    cin.rdbuf(arq.rdbuf());
+  //  ifstream arq(getenv("MYARQ"));
+   // cin.rdbuf(arq.rdbuf());
     flagOptions* op = new flagOptions;
     *op = getopt(argc, argv);
     orderLine* newOrder = nullptr;
@@ -81,7 +81,13 @@ int main(int argc, char ** argv) {
             cout << *it << " bought " << clientt.transferBuy<< " and sold " << clientt.transferSell  << " for a net transfer of $" << clientt.transferTotal << "\n";
         }
     }
-    
+    if(op->ttt){
+        for(auto it = op->tttS.begin(); it !=op->tttS.end(); ++it){
+            med client = op->tttM[*it];
+            client.check();
+            cout<<"Time travelers would buy "<<*it<<" at time: "<<client.tttbuyt<<" and sell it at time: "<<client.tttsellt<<"\n";
+        }
+    }
     
     return 0;
 }

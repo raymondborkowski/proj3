@@ -34,29 +34,28 @@ struct pr{
     double timestamp;
 };
 struct orderLinePR{
-    static unsigned int pos;
-    static double timestamp;
-    orderLinePR(pr &x) : gen(x.random_seed),
-    clients('a', x.lastClient), equities('A', x.lastEquity),
-    arrivals(x.arrivalRate), price(2,11), quantity(1,30) {
-        mt19937 gen(x.random_seed);
-        uniform_int_distribution<char> clients('a', x.lastClient);
-        uniform_int_distribution<char> equities('A', x.lastEquity);
-        exponential_distribution<> arrivals(x.arrivalRate);
-        bernoulli_distribution buy_or_sell;
-        uniform_int_distribution<> price(2, 11);
-        uniform_int_distribution<> quantity(1, 30);
-        
-    }
+    unsigned int pos = 0;
+    double timestamp = 0;
     mt19937 gen;
     uniform_int_distribution<char> clients;
     uniform_int_distribution<char> equities;
-    exponential_distribution<double> arrivals;
+    exponential_distribution<> arrivals;
     bernoulli_distribution buy_or_sell;
-    uniform_int_distribution<int> price;
-    uniform_int_distribution<int> quantity;
+    uniform_int_distribution<> price;
+    uniform_int_distribution<> quantity;
+    orderLinePR(pr &x) : gen(x.random_seed),
+    clients('a', x.lastClient), equities('A', x.lastEquity),
+    arrivals(x.arrivalRate), price(2,11), quantity(1,30) {
+        mt19937 gen;
+        uniform_int_distribution<char> clients;
+        uniform_int_distribution<char> equities;
+        exponential_distribution<> arrivals;
+        bernoulli_distribution buy_or_sell;
+        uniform_int_distribution<> price;
+        uniform_int_distribution<> quantity;
+    }
     orderLine* order();
-    orderLinePR() {}
+    orderLinePR(){};
     
 };
 
